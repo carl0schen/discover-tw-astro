@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+const servicesFiles = import.meta.glob('../content/services/*.md', { eager: true });
+const services = Object.values(servicesFiles).sort((a: any, b: any) => a.frontmatter.order - b.frontmatter.order);
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/services/*.{jpeg,jpg,png,gif,webp}');
+---
+
+<section id="services" class="py-10 md:py-16 bg-gray-50">
+  <div class="container mx-auto px-6 max-w-[1400px]">
+
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Themed Tourism</h2>
+      <p class="text-lg text-gray-500">Discover the diverse experiences Taiwan has to offer.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+
+      {services.map(async (service: any) => {
+        const { title, image, imageCaption } = service.frontmatter;
+        const Content = service.Content;
+
+        const imagePath = `/src/assets/services/${image}`;
+        if (!images[imagePath]) throw new Error(`找不到圖片: ${imagePath}`);
+        const { default: myImage } = await images[imagePath]();
+
+        return (
+          <div class="flex flex-col group">
+
+            <div class="relative flex-shrink-0 mb-6">
+              <div class="aspect-[4/3] overflow-hidden">
+                <Image
+                  src={myImage}
+                  alt={title}
+                  width={800} /* 配合變大的版面，提高載入畫質 */
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                />
+              </div>
+              {imageCaption && (
+                <div class="bg-gray-100 text-xs text-gray-500 text-left py-2 px-4" set:html={imageCaption} />
+              )}
+            </div>
+
+            <div class="flex-grow flex flex-col">
+              <h3 class="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">{title}</h3>
+
+              <div class="prose prose-blue text-gray-600 flex-grow max-w-none text-base leading-relaxed">
+                <Content />
+              </div>
+            </div>
+
+          </div>
+        );
+      })}
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Tailwind v4 專屬寫法：覆蓋預設的 sans 字體 */
+@theme {
+  --font-sans: "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* 保持您原本的平滑捲動設定 */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}

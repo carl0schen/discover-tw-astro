@@ -1,0 +1,45 @@
+---
+// 抓取 media 資料夾下所有的 markdown 檔案，並依照 order 排序
+const mediaFiles = import.meta.glob('../content/media/*.md', { eager: true });
+const videos = Object.values(mediaFiles).sort((a: any, b: any) => a.frontmatter.order - b.frontmatter.order);
+---
+
+<section id="media" class="py-10 md:py-16 bg-[#292524] text-white">
+  <div class="container mx-auto px-6 max-w-5xl">
+
+    <div class="flex flex-col gap-24">
+
+      {videos.map((video: any) => {
+        const { title, youtubeId } = video.frontmatter;
+        const Content = video.Content;
+
+        return (
+          <div class="flex flex-col items-center gap-8">
+
+            <h2 class="text-3xl md:text-4xl font-bold text-center">{title}</h2>
+
+            <div class="w-full overflow-hidden aspect-video">
+
+              <iframe
+                class="w-full h-full border-0 scale-[1.02] origin-center"
+                src={`https://www.youtube-nocookie.com/embed/${youtubeId}?rel=0`}
+                title={title}
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+              </iframe>
+
+            </div>
+
+            <div class="prose prose-invert prose-lg max-w-none text-gray-300 w-full">
+              <Content />
+            </div>
+
+          </div>
+        );
+      })}
+
+    </div>
+
+  </div>
+</section>

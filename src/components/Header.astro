@@ -1,0 +1,114 @@
+---
+import siteData from '../data/siteData.json';
+const { nav } = siteData;
+---
+
+<div class="h-16"></div>
+
+<header class="fixed top-0 left-0 w-full z-50 bg-[#15141a] text-white py-4 shadow-md">
+  <div class="container mx-auto px-6 flex justify-between items-center max-w-[1400px]">
+
+    <a href="#top" class="text-2xl font-bold tracking-widest hover:text-gray-300 transition touch-manipulation">
+      {nav.brand}
+    </a>
+
+    <nav class="hidden md:flex items-center space-x-5">
+      {nav.links.map((link) => (
+        <a
+          href={link.href}
+          class="text-base lg:text-lg font-medium hover:text-[#ffc800] transition-colors duration-300"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href={nav.button.href}
+        class="bg-[#ffc800] text-black text-base lg:text-lg font-bold px-5 py-2 rounded hover:bg-yellow-500 transition duration-300"
+      >
+        {nav.button.label}
+      </a>
+    </nav>
+
+    <button id="mobile-menu-btn" class="block md:hidden focus:outline-none text-white hover:text-[#ffc800] transition-colors touch-manipulation select-none">
+      <svg id="icon-hamburger" class="w-8 h-8 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+      <svg id="icon-close" class="w-8 h-8 hidden transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+
+  </div>
+
+  <nav id="mobile-dropdown" class="absolute top-full left-0 w-full bg-[#111015] border-t border-gray-800 shadow-2xl flex-col px-6 py-4 md:hidden dropdown-gpu">
+    {nav.links.map((link) => (
+      <a
+        href={link.href}
+        class="mobile-link text-white text-lg py-3 hover:text-[#ffc800] transition-colors touch-manipulation"
+      >
+        {link.label}
+      </a>
+    ))}
+    <a
+      href={nav.button.href}
+      class="mobile-link mt-2 block text-center bg-[#ffc800] text-black text-lg font-bold py-2 rounded hover:bg-yellow-500 transition duration-300 touch-manipulation"
+    >
+      {nav.button.label}
+    </a>
+  </nav>
+</header>
+
+<style is:global>
+  /* GPU 硬體加速的下拉選單動畫 */
+  .dropdown-gpu {
+    display: flex; /* 永遠保持 flex，這樣才不會因為 display 的切換導致重繪掉幀 */
+    visibility: hidden; /* 隱藏時不可見，且不佔據螢幕點擊判定 */
+    opacity: 0;
+    transform: translateY(-10px); /* 預設往上縮一點點，創造「滑出」的感覺 */
+    pointer-events: none; /* 隱藏時徹底禁止點擊 */
+    transition: visibility 300ms, opacity 300ms ease-out, transform 300ms ease-out;
+    will-change: opacity, transform; /* 提前告知手機 GPU 準備渲染這兩項屬性 */
+  }
+
+  /* 當 JS 加上 is-open 類別時，優雅地滑順浮現 */
+  .dropdown-gpu.is-open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('mobile-menu-btn');
+    const dropdown = document.getElementById('mobile-dropdown');
+    const iconHamburger = document.getElementById('icon-hamburger');
+    const iconClose = document.getElementById('icon-close');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (btn && dropdown && iconHamburger && iconClose) {
+
+      const toggleMenu = () => {
+        // JS 變得很乾淨：只需切換 is-open，複雜的動畫全部交給 CSS 顯示卡運算
+        dropdown.classList.toggle('is-open');
+
+        // 切換圖示
+        iconHamburger.classList.toggle('hidden');
+        iconClose.classList.toggle('hidden');
+      };
+
+      // 點擊漢堡按鈕
+      btn.addEventListener('click', toggleMenu);
+
+      // 點擊任何連結後，優雅地淡出關閉選單
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (dropdown.classList.contains('is-open')) {
+            toggleMenu();
+          }
+        });
+      });
+    }
+  });
+</script>

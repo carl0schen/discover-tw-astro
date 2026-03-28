@@ -1,0 +1,119 @@
+{
+  "site": {
+    "title": "Discover Taiwan - 探索臺灣",
+    "description": "探索臺灣 is dedicated to showcasing the breathtaking tourist attractions of Taiwan. Join us in exploring the rich culture, stunning landscapes, and unique experiences that our island has to offer. Together, let's promote sustainable tourism and support local communities."
+  },
+  "nav": {
+    "brand": "探索臺灣",
+    "links": [
+      { "label": "Experiences", "href": "#services" },
+      { "label": "Gallery", "href": "#gallery" },
+      { "label": "Media", "href": "#media" },
+      { "label": "FAQ", "href": "#faq" },
+      { "label": "Layover", "href": "#scheduling" },
+      { "label": "News", "href": "#news" },
+      { "label": "Links", "href": "#links" }
+    ],
+    "button": { "label": "Contact Us", "href": "#contact" }
+  },
+  "hero": {
+    "title": "Discover Taiwan",
+    "content": "探索臺灣 is dedicated to showcasing the breathtaking tourist attractions of Taiwan. Join us in exploring the rich culture, stunning landscapes, and unique experiences that our island has to offer. Together, let's promote sustainable tourism and support local communities.",
+    "image": "taipei101.jpg",
+    "imagePosition": "right"
+  },
+  "gallery": [
+    { "title": "Shifen Waterfall (十分瀑布)", "image": "shifen.jpg" },
+    { "title": "Overlooking Guishan Island (遠眺龜山島)", "image": "guishan-island.jpg" },
+    { "title": "Jiufen Old Street (九份老街)", "image": "jiufen.jpg" },
+    { "title": "Tianliao Moon World (田寮月世界)", "image": "tianliao.jpg" },
+    { "title": "Fengchia Night Market (逢甲夜市)", "image": "fengchia.jpg" },
+    { "title": "Sun Moon Lake (日月潭)", "image": "sun-moon-lake.jpg" },
+    { "title": "Jingzaijiao Tile-paved Salt Fields (井仔腳瓦盤鹽田)", "image": "jingzaijiao.jpg" },
+    { "title": "Wuling (武嶺)", "image": "wuling.jpg" },
+    { "title": "Orchid Island (蘭嶼)", "image": "orchid-island.jpg" },
+    { "title": "Liberty Square (自由廣場)", "image": "liberty-square.jpg" },
+    { "title": "Tamsui Fisherman's Wharf (淡水漁人碼頭)", "image": "tamsui.jpg" },
+    { "title": "Tainan Art Museum Building 2 (台南市美術館2館)", "image": "tainan-art-museum.jpg" },
+    { "title": "Formosan Aboriginal Culture Village - Tsou (九族文化村 - 鄒族)", "image": "tsou.jpg" },
+    { "title": "Love River Bay (愛河灣)", "image": "love-river-bay.jpg" },
+    { "title": "Penghu (澎湖)", "image": "penghu.jpg" },
+    { "title": "Luye Highlands (鹿野高台)", "image": "luye-highlands.jpg" },
+    { "title": "Zhengbin Fishing Harbor Colorful House (正濱漁港色彩屋)", "image": "zhengbin.jpg" },
+    { "title": "Dried Persimmons in Hsinchu (新竹柿餅)", "image": "dried-persimmons.jpg" },
+    { "title": "Tea plantations in Alishan Township (阿里山鄉的茶園)", "image": "alishan.jpg" },
+    { "title": "Mt. Bagua Buddha Scenic Area (八卦山大佛風景區)", "image": "mt-bagua.jpg" }
+  ],
+  "scheduling": {
+    "title": "If you are a temporary transit passenger",
+    "subtitle": "Make the most of your time and book your half-day tour now!",
+    "buttonLabel": "More Information",
+    "buttonLink": "https://halfdaytour.taiwan.net.tw/"
+  },
+  "Links": [
+    {
+      "title": "TAIWAN–Waves of Wonder",
+      "url": "https://eng.taiwan.net.tw/",
+      "desc": "Tourism Administration, Republic of China (Taiwan) - Taiwan Tourism Administration's official information website.",
+      "image": "waves-of-wonder-logo.jpg"
+    },
+    {
+      "title": "Taiwanstay",
+      "url": "https://www.taiwanstay.net.tw/TSA/web_page/TSA010100.jsp?lang2=en",
+      "desc": "A legal hostel booking service launched by the Tourism Administration, MOTC.",
+      "image": "taiwanstay-logo.jpg"
+    },
+    {
+      "title": "Taiwan Tourist Shuttle",
+      "url": "https://www.taiwantrip.com.tw/Frontend/Home/Index_en",
+      "desc": "A bus service designed by the Tourism Administration specifically for tourism planning and attraction shuttling.",
+      "image": "taiwan-tourist-shuttle-logo.jpg"
+    },
+    {
+      "title": "Taiwan Tour Bus",
+      "url": "https://www.taiwantourbus.com.tw/C/us/home",
+      "desc": "Tour products launched by the Tourism Administration, MOTC and travel agencies to explore Taiwan easily.",
+      "image": "taiwan-tour-bus-logo.jpg"
+    },
+    {
+      "title": "Taiwan Pass",
+      "url": "https://www.funcard.tw/en",
+      "desc": "An electronic ticket card recommending unique local attractions and providing convenient public transportation access.",
+      "image": "taiwan-pass-logo.png"
+    },
+    {
+      "title": "YouBike",
+      "url": "https://en.youbike.com.tw/region/main/",
+      "desc": "A public bicycle rental system built and operated by Taiwan bicycle manufacturer Giant.",
+      "image": "youbike-logo.jpg"
+    },
+    {
+      "title": "Travel in Taiwan",
+      "url": "https://travelintaiwan.net/",
+      "desc": "The official English bimonthly magazine of the Taiwan Tourism Bureau with useful info about traveling in Taiwan.",
+      "image": "travel-in-taiwan-logo.jpg"
+    },
+    {
+      "title": "Taiwan Cultural Landscape",
+      "url": "https://map.culture.tw/",
+      "desc": "Carefully selected tourist attractions with Taiwan's cultural heritage to understand its multicultural landscape.",
+      "image": "taiwan-cultural-landscape-logo.jpg"
+    },
+    {
+      "title": "Taiwan Bike - Web Portal",
+      "url": "https://taiwanbike.tw/en",
+      "desc": "Provides integrated information on Taiwan’s bicycle-friendly environment, including routes, attractions, services, transport, real-time weather, and route planning for low-carbon travel.",
+      "image": "taiwanbike-logo.jpg"
+    },
+        {
+      "title": "Taiwan Forest Recreation",
+      "url": "https://recreation.forest.gov.tw/en/Index",
+      "desc": "An official integrated portal by the Forestry and Nature Conservation Agency, providing information on Taiwan’s 19 National Forest Recreation Areas, forest parks, nature centers, and the national trail system.",
+      "image": "taiwan-forest-recreation-logo.jpg"
+    }
+  ],
+  "contact": {
+    "title": "Contact Us",
+    "description": "Please send us your thoughts, suggestions, and questions so we can improve."
+  }
+}

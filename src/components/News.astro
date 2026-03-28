@@ -1,0 +1,51 @@
+---
+// 在伺服器端抓取資料 (訪客看不到這段程式碼，只會看到結果)
+let newsItems = [];
+try {
+  const feedUrl = encodeURIComponent("https://eng.taiwan.net.tw/rss.aspx?sNo=0002001");
+  const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${feedUrl}`;
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+
+  // 只取前 6 筆新聞
+  newsItems = data.items ? data.items.slice(0, 6) : [];
+} catch (error) {
+  console.error("RSS 擷取失敗:", error);
+}
+---
+
+<section id="news" class="py-10 md:py-16 bg-white">
+  <div class="container mx-auto px-6 max-w-4xl">
+
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">News from Tourism Administration, MOTC</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      {newsItems.map((item: any) => (
+        // 復刻原本設定的 hover 變成黃色 (#ffe100) 的特效
+        <a
+          href={item.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="block p-6 border border-gray-200 rounded-xl bg-gray-50 hover:bg-[#ffe100] transition-all duration-300"
+        >
+          <h3 class="text-base font-semibold text-gray-900 mb-2">
+            {item.title}
+          </h3>
+          <p class="text-sm text-gray-500">
+            {new Date(item.pubDate).toLocaleDateString()}
+          </p>
+        </a>
+      ))}
+
+      {newsItems.length === 0 && (
+        <p class="col-span-1 md:col-span-2 text-center text-red-500">
+          目前無法載入最新新聞。
+        </p>
+      )}
+
+    </div>
+  </div>
+</section>

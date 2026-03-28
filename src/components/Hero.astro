@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+
+// 接收從 index.astro 傳過來的屬性
+const { title, content, image, imagePosition } = Astro.props;
+
+// 動態載入 src/assets/ 底下的圖片
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
+const imagePath = `/src/assets/${image}`;
+
+// 如果圖片找不到，給一個錯誤提示避免整個網站崩潰
+if (!images[imagePath]) {
+  throw new Error(`找不到圖片，請確認 ${imagePath} 是否存在！`);
+}
+const { default: myImage } = await images[imagePath]();
+
+// 判斷圖片放左邊還是右邊
+const rowClass = imagePosition === 'right' ? 'flex-col lg:flex-row' : 'flex-col lg:flex-row-reverse';
+---
+
+<section class="relative bg-gray-50 pt-6 pb-10 lg:pt-16 lg:pb-16 overflow-hidden">
+  <div class="container mx-auto px-6 max-w-[1400px]">
+    <div class={`flex items-center justify-between gap-12 lg:gap-16 ${rowClass}`}>
+
+      <div class="w-full lg:w-5/12 flex flex-col justify-center space-y-8 z-10">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
+          {title}
+        </h1>
+
+        <p class="text-lg lg:text-xl text-gray-600 leading-relaxed">
+          {content}
+        </p>
+
+        <div>
+          <a href="#contact" class="inline-block bg-[#ffc800] text-black font-bold text-lg px-6 py-3 rounded hover:bg-yellow-500 transition duration-300">
+            Contact Us
+          </a>
+        </div>
+      </div>
+
+      <div class="w-full lg:w-7/12 relative">
+        <div class="overflow-hidden">
+          <Image
+            src={myImage}
+            alt={title}
+            width={1400} /* 配合變寬的版面，稍微調高寬度設定 */
+            /* 拿掉 max-h-[600px]，解除圖片的高度封印！ */
+            class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700 ease-in-out"
+          />
+        </div>
+        <div class="absolute -top-6 -right-6 w-32 h-32 bg-[#ffc800] rounded-full mix-blend-multiply filter blur-2xl opacity-50 -z-10"></div>
+      </div>
+
+    </div>
+  </div>
+</section>

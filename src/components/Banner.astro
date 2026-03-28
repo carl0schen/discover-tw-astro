@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+
+// 抓取 assets 資料夾下的圖片
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
+
+// 請確保 src/assets/ 裡面有一張 banner.jpg，如果檔名不同請修改這裡：
+const imagePath = '/src/assets/banner.jpg';
+
+if (!images[imagePath]) {
+  throw new Error(`找不到橫幅圖片：請確認 ${imagePath} 是否存在！`);
+}
+const { default: bannerImage } = await images[imagePath]();
+---
+
+<section class="relative h-[180px] md:h-[320px] w-full overflow-hidden">
+
+  <Image
+    src={bannerImage}
+    alt="Taiwan Beautiful Landscape"
+    width={1920}
+    class="absolute inset-0 w-full h-full object-cover"
+  />
+
+  <div class="absolute inset-0 bg-black/20"></div>
+
+</section>

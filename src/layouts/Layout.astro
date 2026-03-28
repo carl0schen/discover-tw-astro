@@ -1,0 +1,48 @@
+---
+// 加上這行！把 Tailwind v4 的樣式拉進來
+import '../styles/global.css';
+import CookieBanner from '../components/CookieBanner.astro';
+// 接收標題、描述，並新增 image 屬性。給予預設值以防漏填
+const {
+  title = "Discover Taiwan - 探索臺灣",
+  description = "探索臺灣 is dedicated to showcasing the breathtaking tourist attractions of Taiwan. Join us in exploring the rich culture, stunning landscapes, and unique experiences that our island has to offer. Together, let's promote sustainable tourism and support local communities.",
+  image = "/og-image.jpg"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-16">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=noto-sans-jp:400,500,600,700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-white text-gray-800 font-sans antialiased m-0 p-0">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

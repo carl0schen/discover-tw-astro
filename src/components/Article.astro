@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+// 直接讀取單一 Markdown 檔案
+import * as articleContent from '../content/article/article.md';
+
+const { frontmatter, Content } = articleContent;
+
+// 處理地圖圖片
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
+const imagePath = `/src/assets/${frontmatter.image}`;
+const { default: mapImage } = await images[imagePath]();
+---
+
+<section class="py-10 md:py-16 bg-white">
+  <div class="container mx-auto px-6 max-w-4xl">
+
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-8">
+      {frontmatter.title}
+    </h2>
+
+    <div class="mb-8 flex justify-center">
+      <Image
+        src={mapImage}
+        alt="Map of Taiwan"
+        /* 要求 Astro 產出 2048px 的超高畫質 WebP 大圖 (跟 Solo 一樣) */
+        width={2048}
+        /* 用 CSS (w-full max-w-[410px]) 強制把它縮小顯示。
+             這樣在 Mac 或 2K 螢幕上，它就有海量的像素可以渲染，超級無敵清晰！ */
+        class="w-full max-w-[410px] object-contain"
+      />
+    </div>
+
+    <div class="prose prose-blue max-w-none text-gray-700 leading-normal prose-p:my-3 prose-headings:mt-6 prose-headings:mb-3">
+      <Content />
+    </div>
+
+  </div>
+</section>
