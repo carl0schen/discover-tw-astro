@@ -81,6 +81,7 @@ const { nav } = siteData;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. 處理手機版下拉選單 ---
     const btn = document.getElementById('mobile-menu-btn');
     const dropdown = document.getElementById('mobile-dropdown');
     const iconHamburger = document.getElementById('icon-hamburger');
@@ -88,20 +89,14 @@ const { nav } = siteData;
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
     if (btn && dropdown && iconHamburger && iconClose) {
-
       const toggleMenu = () => {
-        // JS 變得很乾淨：只需切換 is-open，複雜的動畫全部交給 CSS 顯示卡運算
         dropdown.classList.toggle('is-open');
-
-        // 切換圖示
         iconHamburger.classList.toggle('hidden');
         iconClose.classList.toggle('hidden');
       };
 
-      // 點擊漢堡按鈕
       btn.addEventListener('click', toggleMenu);
 
-      // 點擊任何連結後，優雅地淡出關閉選單
       mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
           if (dropdown.classList.contains('is-open')) {
@@ -110,5 +105,25 @@ const { nav } = siteData;
         });
       });
     }
+
+    // --- 2. 處理返回頂部 (攔截 #top 並清除網址 hash) ---
+    const topLinks = document.querySelectorAll('a[href="#top"]');
+
+    topLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // 1. 平滑捲動到最上方
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+
+        // 2. 使用 History API 把網址列洗乾淨
+        // window.location.pathname 會抓取目前的純網址 (例如 '/')
+        // window.location.search 會保留參數 (例如 '?lang=en' 如果未來有的話)
+        history.pushState(null, '', window.location.pathname + window.location.search);
+      });
+    });
   });
 </script>
