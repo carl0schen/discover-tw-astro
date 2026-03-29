@@ -65,8 +65,8 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
       submitBtn.textContent = 'Sending...';
       submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
 
-      // 🌟 這裡的 class 也要同步更新成 sm:w-auto 與 sm:whitespace-nowrap
-      formMessage.className = 'absolute left-0 top-full mt-4 w-full sm:w-auto sm:whitespace-nowrap p-4 rounded-lg shadow-xl text-sm font-medium transition-all duration-500 opacity-0 translate-y-2 pointer-events-none z-50';
+      // 這裡的 class 也要同步更新成 sm:w-auto 與 sm:whitespace-nowrap
+      formMessage.className = 'absolute left-0 top-full mt-4 w-full sm:w-auto sm:whitespace-nowrap p-4 rounded-lg shadow-xl text-sm font-medium transition-all duration-1000 opacity-0 translate-y-2 pointer-events-none z-50';
 
       const formData = new FormData(form);
 
@@ -89,9 +89,11 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
 
           form.reset();
 
+          // 6 秒後「原地」緩慢淡出消失
           setTimeout(() => {
-            formMessage.classList.remove('opacity-100', 'translate-y-0');
-            formMessage.classList.add('opacity-0', 'translate-y-2');
+            formMessage.classList.remove('opacity-100');
+            formMessage.classList.add('opacity-0');
+            // 移除了 translate-y 的變化，不讓它往下掉
           }, 6000);
 
         } else {
