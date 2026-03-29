@@ -5,7 +5,7 @@ import rehypeExternalLinks from 'rehype-external-links'; // 引入外掛
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://test1234.discover.tw',
+  site: 'https://discover-tw-astro.pages.dev',
   devToolbar: {
     enabled: false,
   },
