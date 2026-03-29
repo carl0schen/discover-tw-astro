@@ -30,9 +30,11 @@ const faqs = Object.values(faqFiles).sort((a: any, b: any) => a.frontmatter.orde
             </button>
 
             <div class="faq-content overflow-hidden will-change-[height] transform-gpu" style="height: 0px; display: none;">
-              <div class="pb-6 flex flex-col prose prose-blue text-gray-600 max-w-none">
+
+              <div class="pb-6 prose prose-blue max-w-none text-gray-700 leading-normal prose-p:my-3 prose-headings:mt-6 prose-headings:mb-3">
                 <Content />
               </div>
+
             </div>
 
           </div>
