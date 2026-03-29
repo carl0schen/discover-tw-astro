@@ -8,7 +8,7 @@ const { nav } = siteData;
 <header class="fixed top-0 left-0 w-full z-50 bg-[#15141a] text-white py-4 shadow-md">
   <div class="container mx-auto px-6 flex justify-between items-center max-w-[1400px]">
 
-    <a href="#top" class="text-2xl font-bold tracking-widest hover:text-gray-300 transition touch-manipulation">
+    <a href="/" class="text-2xl font-bold tracking-widest hover:text-gray-300 transition touch-manipulation">
       {nav.brand}
     </a>
 
@@ -106,23 +106,27 @@ const { nav } = siteData;
       });
     }
 
-    // --- 2. 處理返回頂部 (攔截 #top 並清除網址 hash) ---
-    const topLinks = document.querySelectorAll('a[href="#top"]');
+    // --- 2. 處理返回頂部 (攔截 href="/" 且在同一頁的點擊) ---
+    // 抓出所有指向首頁的連結
+    const homeLinks = document.querySelectorAll('a[href="/"]');
 
-    topLinks.forEach(link => {
+    homeLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-        e.preventDefault();
+        // 判斷「目前的網址」是否等於「連結的目的地」
+        // 如果相等，代表我們已經在首頁了，只需平滑捲動並清除後面的 #hash
+        if (window.location.pathname === link.pathname) {
+          e.preventDefault();
 
-        // 1. 平滑捲動到最上方
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
 
-        // 2. 使用 History API 把網址列洗乾淨
-        // window.location.pathname 會抓取目前的純網址 (例如 '/')
-        // window.location.search 會保留參數 (例如 '?lang=en' 如果未來有的話)
-        history.pushState(null, '', window.location.pathname + window.location.search);
+          // 把網址列洗乾淨，只留下純淨的路徑
+          history.pushState(null, '', window.location.pathname);
+        }
+        // 如果不相等（例如未來您在 /about 頁面點擊），就不執行 preventDefault，
+        // 瀏覽器就會正常載入首頁，這就是最完美的行為！
       });
     });
   });
