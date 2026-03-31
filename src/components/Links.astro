@@ -31,7 +31,7 @@ const linkImages = import.meta.glob<{ default: ImageMetadata }>('/src/assets/lin
             target="_blank"
             rel="noopener noreferrer"
             // 讓卡片在手機版高度變矮、取消圓角變方正一點，電腦版維持高挑
-            class="group border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 flex flex-col bg-white h-auto sm:h-full"
+            class="group border border-gray-200 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 flex flex-col bg-white h-auto sm:h-full"
           >
             <div class="h-20 sm:h-32 w-full relative overflow-hidden bg-gray-100 border-b border-gray-100 flex-shrink-0">
               {myImage ? (
