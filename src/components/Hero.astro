@@ -43,8 +43,10 @@ const rowClass = imagePosition === 'right' ? 'flex-col lg:flex-row' : 'flex-col 
           <Image
             src={myImage}
             alt={title}
-            width={1400} /* 配合變寬的版面，稍微調高寬度設定 */
-            /* 拿掉 max-h-[600px]，解除圖片的高度封印！ */
+            width={1400}
+            /* 覆蓋 Astro 預設設定，強制優先載入首圖 */
+            loading="eager"
+            fetchpriority="high"
             class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700 ease-in-out"
           />
         </div>
