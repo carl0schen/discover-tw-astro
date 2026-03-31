@@ -22,10 +22,9 @@ const { default: mapImage } = await images[imagePath]();
       <Image
         src={mapImage}
         alt="Map of Taiwan"
-        /* 要求 Astro 產出 2048px 的超高畫質 WebP 大圖 (跟 Solo 一樣) */
-        width={2048}
-        /* 用 CSS (w-full max-w-[410px]) 強制把它縮小顯示。
-             這樣在 Mac 或 2K 螢幕上，它就有海量的像素可以渲染，超級無敵清晰！ */
+        /* 改用 widths 陣列產生多種尺寸 */
+        widths={[400, 800, 2048]}
+        sizes="(max-width: 768px) 400px, (max-width: 1024px) 800px, 2048px"
         class="w-full max-w-[410px] object-contain"
       />
     </div>
