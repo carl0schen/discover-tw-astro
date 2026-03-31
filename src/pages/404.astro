@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404: Page Not Found | Discover Taiwan" description="Oops! Are you lost? This webpage cannot be found.">
+
+  <main class="flex flex-col items-center justify-center min-h-screen px-6 py-24 bg-gray-50">
+    <div class="text-center max-w-lg relative">
+      <h1 class="text-9xl font-extrabold text-gray-200 tracking-widest mb-4">404</h1>
+
+      <div class="bg-[#ffc800] text-black px-3 py-1 text-sm font-bold rounded rotate-12 absolute top-12 left-1/2 transform -translate-x-1/2 shadow-md whitespace-nowrap">
+        Page Not Found
+      </div>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 mt-8">Oops! Are you lost?</h2>
+
+      <p class="text-gray-500 mb-10 leading-relaxed text-lg">
+        This webpage cannot be found. The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+      </p>
+
+      <a
+        href="/"
+        class="inline-block bg-[#ffc800] text-black font-bold text-lg px-8 py-3 rounded-lg hover:bg-yellow-500 hover:-translate-y-1 transition-all duration-300"
+      >
+        Return to Home
+      </a>
+    </div>
+  </main>
+
+</Layout>
