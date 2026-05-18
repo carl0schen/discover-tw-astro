@@ -1,6 +1,6 @@
 # Discover Taiwan - Astro One-Page Theme 🇹🇼
 
-A high-performance, fully responsive, content-driven single-page (One-Page) website theme built with **Astro** and **Tailwind CSS**. Originally crafted to showcase the breathtaking beauty of Taiwan (migrated from Mozilla Solo), this theme features a highly modular layout and a strict "separation of content and style." It is perfectly suited for anyone looking to quickly deploy personal portfolios, corporate landing pages, or event promotional sites.
+A high-performance, fully responsive, content-driven single-page (One-Page) website theme built with **Astro** and **Tailwind CSS**. Originally crafted to promote tourism in Taiwan (migrated from Mozilla Solo), this theme features a highly modular layout and a strict "separation of content and style." It is perfectly suited for anyone looking to quickly deploy personal portfolios, corporate landing pages, or event promotional sites.
 
 ---
 
