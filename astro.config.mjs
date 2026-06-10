@@ -1,9 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import rehypeExternalLinks from 'rehype-external-links'; // 引入外掛
+import { unified } from '@astrojs/markdown-remark'; // 新增：引入 unified
+import rehypeExternalLinks from 'rehype-external-links';
 
-// https://astro.build/config
 export default defineConfig({
   site: 'https://discover-tw-astro.pages.dev',
   devToolbar: {
@@ -12,18 +12,18 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  // 新增 Markdown 解析器設定
   markdown: {
-    rehypePlugins: [
-      [
-        rehypeExternalLinks,
-        {
-          // 遇到外部連結時，自動加上 target="_blank" (開新分頁)
-          target: '_blank',
-          // 自動加上安全性防護標籤
-          rel: ['noopener', 'noreferrer']
-        }
+    // 改用 processor + unified() 取代舊的 rehypePlugins
+    processor: unified({
+      rehypePlugins: [
+        [
+          rehypeExternalLinks,
+          {
+            target: '_blank',
+            rel: ['noopener', 'noreferrer']
+          }
+        ]
       ]
-    ]
+    })
   }
 });
