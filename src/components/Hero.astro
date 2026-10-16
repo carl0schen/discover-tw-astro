@@ -1,20 +1,16 @@
 ---
 import { Image } from 'astro:assets';
 
-// 接收從 index.astro 傳過來的屬性
 const { title, content, image, imagePosition } = Astro.props;
 
-// 動態載入 src/assets/ 底下的圖片
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
 const imagePath = `/src/assets/${image}`;
 
-// 如果圖片找不到，給一個錯誤提示避免整個網站崩潰
 if (!images[imagePath]) {
   throw new Error(`找不到圖片，請確認 ${imagePath} 是否存在！`);
 }
 const { default: myImage } = await images[imagePath]();
 
-// 判斷圖片放左邊還是右邊
 const rowClass = imagePosition === 'right' ? 'flex-col lg:flex-row' : 'flex-col lg:flex-row-reverse';
 ---
 
@@ -44,7 +40,6 @@ const rowClass = imagePosition === 'right' ? 'flex-col lg:flex-row' : 'flex-col 
             src={myImage}
             alt={title}
             width={1400}
-            /* 覆蓋 Astro 預設設定，強制優先載入首圖 */
             loading="eager"
             fetchpriority="high"
             class="w-full h-auto object-cover hover:scale-105 transition-transform duration-700 ease-in-out"

@@ -1,11 +1,9 @@
 ---
 import { Image } from 'astro:assets';
-// 直接讀取單一 Markdown 檔案
 import * as articleContent from '../content/article/article.md';
 
 const { frontmatter, Content } = articleContent;
 
-// 處理地圖圖片
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
 const imagePath = `/src/assets/${frontmatter.image}`;
 const { default: mapImage } = await images[imagePath]();
@@ -22,7 +20,6 @@ const { default: mapImage } = await images[imagePath]();
       <Image
         src={mapImage}
         alt="Map of Taiwan"
-        /* 改用 widths 陣列產生多種尺寸 */
         widths={[400, 800, 2048]}
         sizes="(max-width: 768px) 400px, (max-width: 1024px) 800px, 2048px"
         class="w-full max-w-[410px] object-contain"

@@ -1,5 +1,4 @@
 ---
-// 抓取 media 資料夾下所有的 markdown 檔案，並依照 order 排序
 const mediaFiles = import.meta.glob('../content/media/*.md', { eager: true });
 const videos = Object.values(mediaFiles).sort((a: any, b: any) => a.frontmatter.order - b.frontmatter.order);
 ---

@@ -2,7 +2,6 @@
 import siteData from '../data/siteData.json';
 const { contact } = siteData;
 
-// 讀取環境變數。如果使用者沒設定，就給個提示字串防呆
 const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KEY_HERE';
 ---
 
@@ -60,7 +59,6 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      // 改變按鈕狀態
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
       submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
@@ -89,11 +87,9 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_ACCESS_KEY || 'YOUR_ACCESS_KE
 
           form.reset();
 
-          // 6 秒後「原地」緩慢淡出消失
           setTimeout(() => {
             formMessage.classList.remove('opacity-100');
             formMessage.classList.add('opacity-0');
-            // 移除了 translate-y 的變化，不讓它往下掉
           }, 6000);
 
         } else {

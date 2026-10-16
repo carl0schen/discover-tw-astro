@@ -59,18 +59,16 @@ const { nav } = siteData;
 </header>
 
 <style is:global>
-  /* GPU 硬體加速的下拉選單動畫 */
   .dropdown-gpu {
-    display: flex; /* 永遠保持 flex，這樣才不會因為 display 的切換導致重繪掉幀 */
-    visibility: hidden; /* 隱藏時不可見，且不佔據螢幕點擊判定 */
+    display: flex;
+    visibility: hidden;
     opacity: 0;
-    transform: translateY(-10px); /* 預設往上縮一點點，創造「滑出」的感覺 */
-    pointer-events: none; /* 隱藏時徹底禁止點擊 */
+    transform: translateY(-10px);
+    pointer-events: none;
     transition: visibility 300ms, opacity 300ms ease-out, transform 300ms ease-out;
-    will-change: opacity, transform; /* 提前告知手機 GPU 準備渲染這兩項屬性 */
+    will-change: opacity, transform;
   }
 
-  /* 當 JS 加上 is-open 類別時，優雅地滑順浮現 */
   .dropdown-gpu.is-open {
     visibility: visible;
     opacity: 1;
@@ -81,7 +79,6 @@ const { nav } = siteData;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. 處理手機版下拉選單 ---
     const btn = document.getElementById('mobile-menu-btn');
     const dropdown = document.getElementById('mobile-dropdown');
     const iconHamburger = document.getElementById('icon-hamburger');
@@ -106,14 +103,10 @@ const { nav } = siteData;
       });
     }
 
-    // --- 2. 處理返回頂部 (攔截 href="/" 且在同一頁的點擊) ---
-    // 抓出所有指向首頁的連結
     const homeLinks = document.querySelectorAll('a[href="/"]');
 
     homeLinks.forEach(link => {
       link.addEventListener('click', (e) => {
-        // 判斷「目前的網址」是否等於「連結的目的地」
-        // 如果相等，代表我們已經在首頁了，只需平滑捲動並清除後面的 #hash
         if (window.location.pathname === link.pathname) {
           e.preventDefault();
 
@@ -122,11 +115,8 @@ const { nav } = siteData;
             behavior: 'smooth'
           });
 
-          // 把網址列洗乾淨，只留下純淨的路徑
           history.pushState(null, '', window.location.pathname);
         }
-        // 如果不相等（例如未來您在 /about 頁面點擊），就不執行 preventDefault，
-        // 瀏覽器就會正常載入首頁，這就是最完美的行為！
       });
     });
   });

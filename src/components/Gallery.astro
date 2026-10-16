@@ -37,7 +37,7 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery
           <a
             href={optimizedLightboxImg.src}
             class={`relative block group overflow-hidden transition-shadow duration-300 aspect-[4/3] lg:aspect-[16/11] bg-gray-100 cursor-pointer ${responsiveClasses}`}
-            data-fancybox="taiwan-photos" /* 改名！避開與 #gallery 的網址衝突 */
+            data-fancybox="taiwan-photos"
             data-caption={item.title}
           >
 
@@ -66,19 +66,16 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     Fancybox.bind('[data-fancybox="taiwan-photos"]', {
-      // 徹底關閉 Hash 網址連動功能，防止跟導覽列打架
       Hash: false,
-      Thumbs: false, // 關閉燈箱效果的照片縮圖預覽
-      // 關閉預設的縮放進場，強制套用最穩定的「淡入淡出」
+      Thumbs: false,
       Images: {
         zoom: false,
       },
-      // 原生自帶的 UI 排版
       Toolbar: {
         display: {
-          left: ["infobar"], // 左上角的數字計數器 (1 / 20)
+          left: ["infobar"],
           middle: [],
-          right: ["close"],  // 右上角的關閉叉叉
+          right: ["close"],
         },
       },
     });
@@ -86,18 +83,15 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery
 </script>
 
 <style is:global>
-  /* 將燈箱背景改為純黑，與 Solo 一致 */
   .fancybox__backdrop {
     background: #000 !important;
   }
 
-  /* 移除預設的四周留白，讓照片左右完全貼齊螢幕 */
   .fancybox__slide,
   .f-carousel__slide {
     padding: 0 !important;
   }
 
-  /* 標題樣式復刻：半透明黑底、小字、置中 */
   .fancybox__caption {
     text-align: center;
   }
@@ -110,7 +104,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery
     display: inline-block;
   }
 
-  /* 保障手機版一定要顯示左右箭頭，加上您確認過最完美的圓底 */
   @media (max-width: 768px) {
     .f-button[data-carousel-prev],
     .f-button[data-carousel-next] {
@@ -121,7 +114,6 @@ const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/gallery
       height: 44px !important;
       opacity: 1 !important;
     }
-    /* 讓箭頭稍微貼近螢幕邊緣 */
     .f-button[data-carousel-prev] { left: 10px !important; }
     .f-button[data-carousel-next] { right: 10px !important; }
   }

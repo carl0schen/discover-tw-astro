@@ -60,7 +60,6 @@ const faqs = Object.values(faqFiles).sort((a: any, b: any) => a.frontmatter.orde
         const isClosed = content.style.height === '0px' || content.style.display === 'none';
 
         if (isClosed) {
-          // 準備展開
           content.style.display = 'block';
           content.style.height = '0px';
 
@@ -82,7 +81,6 @@ const faqs = Object.values(faqFiles).sort((a: any, b: any) => a.frontmatter.orde
           });
 
         } else {
-          // 準備收合
           content.style.height = content.scrollHeight + 'px';
 
           requestAnimationFrame(() => {

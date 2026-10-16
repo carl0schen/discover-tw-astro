@@ -1,10 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 
-// 抓取 assets 資料夾下的圖片
 const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif,webp}');
 
-// 請確保 src/assets/ 裡面有一張 banner.jpg，如果檔名不同請修改這裡：
 const imagePath = '/src/assets/banner.jpg';
 
 if (!images[imagePath]) {
