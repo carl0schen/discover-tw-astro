@@ -1,19 +1,22 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import { unified } from '@astrojs/markdown-remark'; // 新增：引入 unified
+import { unified } from '@astrojs/markdown-remark';
 import rehypeExternalLinks from 'rehype-external-links';
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://discover-tw-astro.pages.dev',
+  site: 'https://discover.tw',
+
   devToolbar: {
     enabled: false,
   },
+
   vite: {
     plugins: [tailwindcss()]
   },
+
   markdown: {
-    // 改用 processor + unified() 取代舊的 rehypePlugins
     processor: unified({
       rehypePlugins: [
         [
@@ -25,5 +28,7 @@ export default defineConfig({
         ]
       ]
     })
-  }
+  },
+
+  integrations: [sitemap()]
 });
