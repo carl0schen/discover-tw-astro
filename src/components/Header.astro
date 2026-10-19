@@ -90,6 +90,7 @@ const { nav } = siteData;
         dropdown.classList.toggle('is-open');
         iconHamburger.classList.toggle('hidden');
         iconClose.classList.toggle('hidden');
+        document.body.classList.toggle('overflow-hidden');
       };
 
       btn.addEventListener('click', toggleMenu);
@@ -100,6 +101,17 @@ const { nav } = siteData;
             toggleMenu();
           }
         });
+      });
+
+      document.addEventListener('pointerdown', (event) => {
+        if (dropdown.classList.contains('is-open')) {
+          const isClickInsideDropdown = dropdown.contains(event.target);
+          const isClickOnBtn = btn.contains(event.target);
+
+          if (!isClickInsideDropdown && !isClickOnBtn) {
+            toggleMenu();
+          }
+        }
       });
     }
 
