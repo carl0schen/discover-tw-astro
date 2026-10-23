@@ -53,9 +53,9 @@
         throw new Error(data.message || "Invalid RSS data or API limit reached.");
       }
     } catch (error) {
-      console.error("RSS 擷取失敗，詳細原因:", error.message);
+      console.error("RSS fetch failed, details:", error.message);
       if (container) {
-        container.innerHTML = '<p class="col-span-1 md:col-span-2 text-center text-red-500">目前無法載入最新新聞。</p>';
+        container.innerHTML = '<p class="col-span-1 md:col-span-2 text-center text-red-500">Unable to load the latest news.</p>';
       }
     }
   }
