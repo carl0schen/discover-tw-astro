@@ -7,13 +7,21 @@ A high-performance, fully responsive, content-driven single-page (One-Page) webs
 ## ✨ Core Features
 
 - **🚀 Extreme Performance**: Powered by the modern Astro framework. It delivers zero client-side JavaScript by default, resulting in lightning-fast loading speeds and perfect Core Web Vitals.
+
 - **📱 Fluid Responsive Design (RWD)**: Built from the ground up with Tailwind CSS. It features a hardware-accelerated mobile drawer menu and perfectly adapts from small smartphone screens to large desktop monitors.
+
 - **🖼️ Native Image Optimization**: Utilizes Astro's native asset pipeline to automatically generate multi-width responsive WebP images. It serves lightweight assets to mobile devices on 4G networks while rendering crystal-clear, high-pixel graphics on high-DPI (Retina) or 2K/4K displays. Enhanced with `fetchpriority="high"` for critical hero images to maximize LCP performance.
+
 - **🗂️ Content & Data Driven**: All text content, navigation configurations, external links, and image asset paths are centrally managed within a single data hub: `src/data/siteData.json`. You can completely customize the website content without writing a single line of HTML/CSS code.
+
 - **📸 Premium Zero-Dependency Gallery**: Integrated with the latest **Fancybox v5** (`@fancyapps/ui`). Rewritten entirely in pure Vanilla JS with zero jQuery dependencies, it provides smooth touch gestures, smart mobile navigation arrows, slide indexing, and an immersive lightbox layout.
+
 - **✉️ Form Integration**: Pre-configured with an AJAX contact form via Web3Forms, allowing you to securely receive visitor messages directly in your inbox without setting up a backend server.
+
 - **🛡️ Distraction-Free Custom 404 Page**: Includes a localized, full-screen `404.astro` error page tailored specifically for single-page applications. It strips out broken anchor navigation links to ensure a flawless user experience and includes proper meta tags to prevent search engines from indexing error pages.
+
 - **🔍 SEO & Social Share Optimization**: Fully semantic HTML structure pre-configured with Open Graph (OG) and Twitter Card tags to automatically pull rich snippet previews when sharing links on social media platforms.
+
 
 ---
 
@@ -26,19 +34,22 @@ Ensure you have [Node.js](https://nodejs.org/) installed on your local machine. 
 npm install
 ```
 
-### 2. Configure Environment Variables (Contact Form)
+### 2. Configure Environment Variables (Forms & RSS)
 
-This theme leverages [Web3Forms](https://web3forms.com/) to process form submissions.
+This theme leverages external services for form submissions and dynamic news fetching. You will need to configure environment variables for these integrations.
 
-1. Visit the Web3Forms official website and register for a free **Access Key**.
-2. Create a file named `.env` in the root directory of your project (on the same level as `package.json`).
-3. Add your unique access key to the `.env` file:
+1. Create a file named `.env` in the root directory of your project (on the same level as `package.json`).
+2. **Contact Form (Web3Forms)**: Visit the [Web3Forms](https://web3forms.com/) official website and register for a free **Access Key**.
+3. **Dynamic RSS Feed (rss2json)**: Visit [rss2json](https://rss2json.com/) to register for a free **API Key**.
+   * *Security Tip*: To prevent unauthorized use and quota theft, it is highly recommended to restrict your API key. In your rss2json dashboard, navigate to the security settings, select **HTTP referrers**, and add your domains (e.g., `localhost`, `127.0.0.1`, `*.pages.dev`, and `yourdomain.com`).
+4. Add your unique keys to the `.env` file:
 
 ```env
-PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+PUBLIC_WEB3FORMS_ACCESS_KEY=your_web3forms_access_key_here
+PUBLIC_RSS2JSON_API_KEY=your_rss2json_api_key_here
 ```
 
-*(Note: The `.env` file is already listed in `.gitignore` to prevent your private credentials from accidentally leaking on public repositories.)*
+*(Note: The `.env` file is already listed in `.gitignore` to prevent your private credentials from accidentally leaking on public repositories. Remember to also add these variables to your deployment platform, such as Cloudflare Pages, before going live.)*
 
 ### 3. Start the Local Development Server
 
@@ -61,9 +72,12 @@ Almost every piece of user-facing copy—including navigation menus, CTA buttons
 
 ### 🖼️ 2. Swapping Visual Assets
 
-* **Hero / Section Backgrounds**: Place your high-resolution graphics into the `src/assets/` directory and update the corresponding filenames inside the `.astro` templates or the central site configuration JSON.
-* **Photo Gallery Grid**: Simply drop your image assets into `src/assets/gallery/` and append or modify the image metadata entries in the `gallery` block within `siteData.json`. The dynamic grid automatically recalibrates masonry alignments.
-* **Social Preview Image (OG Image)**: Save a standard `1200x630` pixels graphical asset under the filename `og-image.jpg` and place it directly inside the `public/` folder.
+- **Hero / Section Backgrounds**: Place your high-resolution graphics into the `src/assets/` directory and update the corresponding filenames inside the `.astro` templates or the central site configuration JSON.
+
+- **Photo Gallery Grid**: Simply drop your image assets into `src/assets/gallery/` and append or modify the image metadata entries in the `gallery` block within `siteData.json`. The dynamic grid automatically recalibrates masonry alignments.
+
+- **Social Preview Image (OG Image)**: Save a standard `1200x630` pixels graphical asset under the filename `og-image.jpg` and place it directly inside the `public/` folder.
+
 
 ### ✍️ 3. Introducing Dedicated Editorial Content
 
