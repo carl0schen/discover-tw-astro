@@ -12,7 +12,7 @@ Taiwan is an island in East Asia, located about 180 kilometers east of mainland 
 
 **International Flights**
 
-[**Taiwan Taoyuan International Airport (TPE)**](https://www.taoyuan-airport.com/?lang=en) is the main gateway for international travelers, located 40 kilometers west of Taipei. [**Taipei Songshan Airport (TSA)**](https://www.tsa.gov.tw/?id=ef81d612-6ca0-4e0f-9459-30bfb8c9523f&culture=2) primarily serves domestic routes within Taiwan, but it also offers direct flights to a few select Asian countries. [**Taichung International Airport (RMQ)**](https://www.tca.gov.tw/eng/) serves central Taiwan, offering international flights to several destinations across Asia. [**Kaohsiung International Airport (KHH)**](https://www.kia.gov.tw/en/) serves as the primary international hub for southern Taiwan, connecting the region to various destinations across Asia and beyond.
+[**Taiwan Taoyuan International Airport (TPE)**](https://www.taoyuan-airport.com/?lang=en) is the main gateway for international travelers, located 40 kilometers west of Taipei. [**Taipei Songshan Airport (TSA)**](https://www.tsa.gov.tw/?id=ef81d612-6ca0-4e0f-9459-30bfb8c9523f&culture=2) primarily serves domestic routes within Taiwan, but it also offers direct flights to a few select Asian countries. [**Taichung International Airport (RMQ)**](https://www.tca.gov.tw/en/) serves central Taiwan, offering international flights to several destinations across Asia. [**Kaohsiung International Airport (KHH)**](https://www.kia.gov.tw/en/) serves as the primary international hub for southern Taiwan, connecting the region to various destinations across Asia and beyond.
 
 Direct flights connect Taiwan with:
 
